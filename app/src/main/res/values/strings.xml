@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Mini Proyecto 1</string>
     <string name="todo">TODO</string>
-    <string name="button">presioname</string>
+    <string name="button">Presióname</string>
 </resources>
