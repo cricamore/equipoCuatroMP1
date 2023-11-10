@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
-import com.cristian.miniproyecto1.databinding.ToolbarBinding
+import com.cristian.miniproyecto1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding:ToolbarBinding
+    private lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val shareButton = binding.shareButton
+        val shareButton: ImageView = binding.toolbar.shareButton
+
         shareButton.setOnClickListener {
             share()
         }
