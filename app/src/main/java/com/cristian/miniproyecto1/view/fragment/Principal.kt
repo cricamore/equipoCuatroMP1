@@ -1,5 +1,6 @@
 package com.cristian.miniproyecto1.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,23 @@ class Principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controladores()
+    }
+
+    private fun controladores() {
+        binding.toolbar.shareButton.setOnClickListener {
+            share()
+        }
+    }
+
+    private fun share() {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.setType("text/plain")
+        val shareBody = "Body"
+        val shareSub = "Subject"
+        intent.putExtra(Intent.EXTRA_SUBJECT, shareSub)
+        intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        startActivity(Intent.createChooser(intent, "Share using"))
     }
 
 
