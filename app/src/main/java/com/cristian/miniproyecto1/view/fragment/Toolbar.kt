@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.databinding.FragmentRetoBinding
 import com.cristian.miniproyecto1.databinding.FragmentToolbarBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Toolbar : Fragment() {
 
     private lateinit var binding: FragmentToolbarBinding
@@ -25,8 +27,11 @@ class Toolbar : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val shareButton = binding.shareButton
-        shareButton.setOnClickListener {
+        controladores()
+    }
+
+    private fun controladores() {
+        binding.shareButton.setOnClickListener{
             share()
         }
     }
