@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pico botella</string>
+    <string name="custom_dialog">Agregar reto</string>
+    <string name="reto_dialog">Escriba el reto</string>
+    <string name="cancel">Cancelar</string>
+    <string name="guardar">Guardar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

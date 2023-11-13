@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentRetos">
+
+    <fragment
+        android:id="@+id/fragmentRetos"
+        android:name="com.example.picobotella.fragment.FragmentRetos"
+        android:label="FragmentRetos"
+        tools:layout = "@layout/fragment_retos">
+        <action
+            android:id="@+id/action_fragmentRetos_to_fragmentCustomDialog"
+            app:destination="@id/fragmentCustomDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCustomDialog"
+        android:name="com.example.picobotella.fragment.FragmentCustomDialog"
+        android:label="FragmentCustomDialog"
+        tools:layout = "@layout/fragment_custom_dialog">
+        <action
+            android:id="@+id/action_fragmentCustomDialog_to_fragmentRetos"
+            app:destination="@id/fragmentRetos" />
+    </fragment>
+
+</navigation>
