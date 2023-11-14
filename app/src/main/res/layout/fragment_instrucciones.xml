@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.Instrucciones"
+        android:background="#424242">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarRetos"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#424242">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:src="@drawable/back_arrow" />
+
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Reglas del juego"
+                android:textColor="#FF5733"
+                android:textSize="26sp"
+                android:layout_toEndOf="@id/btnBack"
+                android:layout_toStartOf="@+id/textViewTitulo"
+                android:layout_gravity="center_horizontal"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Título 1 -->
+        <TextView
+            android:id="@+id/titulo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Cómo se juega?"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_below="@id/toolbarRetos"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Descripción 1 -->
+        <TextView
+            android:id="@+id/descripcion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Los jugadores forman un círculo y en el centro colocan el dispositivo móvil, luego tocan el botón parpadeante para girar la botella. El jugador que señale la botella debe cumplir el reto que lanza la app, de lo contrario abandona el juego."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_below="@id/titulo1"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Título 2 -->
+        <TextView
+            android:id="@+id/titulo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Quién gana?"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_below="@id/descripcion1"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Descripción 2 -->
+        <TextView
+            android:id="@+id/descripcion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gana el último jugador que no abandone el juego."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_below="@id/titulo2"
+            android:layout_marginTop="8dp"/>
+
+    </RelativeLayout>
+</layout>

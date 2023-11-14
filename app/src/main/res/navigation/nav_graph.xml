@@ -4,9 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/principal">
+<!--    Fragment Principal-->
     <fragment
         android:id="@+id/principal"
         android:name="com.cristian.miniproyecto1.view.fragment.Principal"
         android:label="Principal"
         tools:layout="@layout/fragment_principal" />
+    <action
+        android:id="@+id/action_to_fragmentInstrucciones"
+        app:destination="@id/fragmentInstrucciones" />
+<!--    Fragment de Instrucciones-->
+    <fragment
+        android:id="@+id/fragmentInstrucciones"
+        android:name="com.cristian.miniproyecto1.view.fragment.Instrucciones"
+        android:label="Principal"
+        tools:layout="@layout/fragment_instrucciones"
+        />
+    <action
+        android:id="@+id/action_to_principal"
+        app:destination="@id/principal" />
+
 </navigation>

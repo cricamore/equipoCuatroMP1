@@ -11,6 +11,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.databinding.FragmentPrincipalBinding
 
@@ -37,6 +38,10 @@ class Principal : Fragment() {
     private fun controladores() {
         binding.toolbar.shareButton.setOnClickListener {
             share()
+        }
+        binding.toolbar.rulesButton.setOnClickListener{
+            findNavController().navigate(R.id.action_to_fragmentInstrucciones)
+            mediaPlayer.stop()
         }
 
         circularButton = binding.button
@@ -88,7 +93,6 @@ class Principal : Fragment() {
         super.onDestroy()
         mediaPlayer.release()
     }
-
 
 
 }
