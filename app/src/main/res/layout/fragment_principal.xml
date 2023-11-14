@@ -14,11 +14,10 @@
         <include layout="@layout/toolbar"
             android:id="@+id/toolbar"/>
 
-
         <ImageView
             android:id="@+id/imageViewBotella"
-            android:layout_width="300dp"
-            android:layout_height="400dp"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
             android:src="@drawable/botella"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="3"
             android:textSize="40dp"
-            android:textColor="@color/orange"
+            android:textColor="@color/textorange"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="@id/imageViewBotella"
             app:layout_constraintBottom_toBottomOf="@id/imageViewBotella"
@@ -49,7 +48,7 @@
             android:layout_height="73dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="84dp"
+            android:layout_marginBottom="88dp"
             android:background="@drawable/parpadeante"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +56,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textViewPresioname"
+            android:id="@+id/pressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"

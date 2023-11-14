@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
+import android.view.animation.RotateAnimation
 import android.view.animation.ScaleAnimation
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.databinding.FragmentPrincipalBinding
@@ -18,7 +21,10 @@ import com.cristian.miniproyecto1.databinding.FragmentPrincipalBinding
 class Principal : Fragment() {
     private lateinit var binding: FragmentPrincipalBinding
     private lateinit var circularButton: Button
-    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var bgsound: MediaPlayer
+    private lateinit var spinSound: MediaPlayer
+    private lateinit var imageViewBotella: ImageView
+    private lateinit var pressText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,22 +42,30 @@ class Principal : Fragment() {
     }
 
     private fun controladores() {
+        imageViewBotella = binding.imageViewBotella
+        pressText = binding.pressText
+
         binding.toolbar.shareButton.setOnClickListener {
             share()
         }
         binding.toolbar.rulesButton.setOnClickListener{
             findNavController().navigate(R.id.action_to_fragmentInstrucciones)
-            mediaPlayer.stop()
+            bgsound.stop()
         }
 
         circularButton = binding.button
         startRippleAnimation(circularButton)
 
-        mediaPlayer = MediaPlayer.create(activity, R.raw.bgsound)
+        bgsound = MediaPlayer.create(activity, R.raw.bgsound)
+        spinSound = MediaPlayer.create(activity, R.raw.girar)
 
-        mediaPlayer.isLooping = true
-        mediaPlayer.start()
-        mediaPlayer.setVolume(1.0f, 1.0f)
+        bgsound.isLooping = true
+        bgsound.start()
+        bgsound.setVolume(1.0f, 1.0f)
+
+        circularButton.setOnClickListener {
+            startBottleSpin()
+        }
 
     }
 
@@ -89,9 +103,65 @@ class Principal : Fragment() {
         view.startAnimation(animationSet)
     }
 
+    private fun startBottleSpin() {
+        circularButton.isEnabled = false
+        circularButton.clearAnimation()
+        circularButton.visibility = View.INVISIBLE
+
+        pressText.visibility = View.INVISIBLE
+
+        val randomDegrees = (Math.random() * 360).toFloat()
+        val rotateAnimation = RotateAnimation(
+            0f,
+            3600f + randomDegrees,
+            Animation.RELATIVE_TO_SELF,
+            0.5f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f
+        )
+        rotateAnimation.duration = 5000
+        rotateAnimation.fillAfter = true
+
+        rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
+                playBottleSpinSound()
+                imageViewBotella.visibility = View.VISIBLE
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                stopBottleSpinSound()
+                circularButton.isEnabled = true
+                circularButton.visibility = View.VISIBLE
+                pressText.visibility = View.VISIBLE
+                startRippleAnimation(circularButton)
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {}
+        })
+
+
+        imageViewBotella.startAnimation(rotateAnimation)
+    }
+
+    private fun playBottleSpinSound() {
+        if (!spinSound.isPlaying) {
+            spinSound.start()
+            bgsound.stop()
+            bgsound.seekTo(0)
+        }
+    }
+
+    private fun stopBottleSpinSound() {
+        if (spinSound.isPlaying) {
+            spinSound.pause()
+            bgsound.start()
+            spinSound.seekTo(0)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer.release()
+        spinSound.release()
     }
 
 
