@@ -25,6 +25,8 @@ class Principal : Fragment() {
     private lateinit var spinSound: MediaPlayer
     private lateinit var imageViewBotella: ImageView
     private lateinit var pressText: TextView
+    private var currentRotation = 0f
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,8 +114,8 @@ class Principal : Fragment() {
 
         val randomDegrees = (Math.random() * 360).toFloat()
         val rotateAnimation = RotateAnimation(
-            0f,
-            3600f + randomDegrees,
+            currentRotation,
+            3600f + randomDegrees + currentRotation,
             Animation.RELATIVE_TO_SELF,
             0.5f,
             Animation.RELATIVE_TO_SELF,
@@ -138,7 +140,7 @@ class Principal : Fragment() {
 
             override fun onAnimationRepeat(animation: Animation?) {}
         })
-
+        currentRotation += 3600f + randomDegrees
 
         imageViewBotella.startAnimation(rotateAnimation)
     }
