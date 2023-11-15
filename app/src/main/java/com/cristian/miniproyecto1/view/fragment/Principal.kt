@@ -3,6 +3,7 @@ package com.cristian.miniproyecto1.view.fragment
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +25,10 @@ class Principal : Fragment() {
     private lateinit var bgsound: MediaPlayer
     private lateinit var spinSound: MediaPlayer
     private lateinit var imageViewBotella: ImageView
+    private lateinit var countdownText: TextView
     private lateinit var pressText: TextView
     private var currentRotation = 0f
+    private var isBottleSpinning = false
 
 
     override fun onCreateView(
@@ -46,6 +49,7 @@ class Principal : Fragment() {
     private fun controladores() {
         imageViewBotella = binding.imageViewBotella
         pressText = binding.pressText
+        countdownText = binding.textViewContador
 
         binding.toolbar.shareButton.setOnClickListener {
             share()
@@ -54,6 +58,8 @@ class Principal : Fragment() {
             findNavController().navigate(R.id.action_to_fragmentInstrucciones)
             bgsound.stop()
         }
+
+        countdownText.visibility = View.INVISIBLE
 
         circularButton = binding.button
         startRippleAnimation(circularButton)
@@ -66,7 +72,9 @@ class Principal : Fragment() {
         bgsound.setVolume(1.0f, 1.0f)
 
         circularButton.setOnClickListener {
-            startBottleSpin()
+            if (!isBottleSpinning) {
+                startBottleSpin()
+            }
         }
 
     }
@@ -106,6 +114,7 @@ class Principal : Fragment() {
     }
 
     private fun startBottleSpin() {
+        isBottleSpinning = true
         circularButton.isEnabled = false
         circularButton.clearAnimation()
         circularButton.visibility = View.INVISIBLE
@@ -127,7 +136,6 @@ class Principal : Fragment() {
         rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
                 playBottleSpinSound()
-                imageViewBotella.visibility = View.VISIBLE
             }
 
             override fun onAnimationEnd(animation: Animation?) {
@@ -136,6 +144,7 @@ class Principal : Fragment() {
                 circularButton.visibility = View.VISIBLE
                 pressText.visibility = View.VISIBLE
                 startRippleAnimation(circularButton)
+                showCountdownText()
             }
 
             override fun onAnimationRepeat(animation: Animation?) {}
@@ -143,6 +152,21 @@ class Principal : Fragment() {
         currentRotation += 3600f + randomDegrees
 
         imageViewBotella.startAnimation(rotateAnimation)
+    }
+
+    private fun showCountdownText() {
+        countdownText.visibility = View.VISIBLE
+
+        object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownText.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                countdownText.visibility = View.INVISIBLE
+                isBottleSpinning = false
+            }
+        }.start()
     }
 
     private fun playBottleSpinSound() {
