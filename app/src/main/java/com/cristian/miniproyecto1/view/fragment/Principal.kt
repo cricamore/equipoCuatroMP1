@@ -30,6 +30,9 @@ class Principal : Fragment() {
     private var currentRotation = 0f
     private var isBottleSpinning = false
 
+    private var isBGSoundEnabled = true
+    private lateinit var soundButton: ImageView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +53,7 @@ class Principal : Fragment() {
         imageViewBotella = binding.imageViewBotella
         pressText = binding.pressText
         countdownText = binding.textViewContador
+        soundButton = binding.toolbar.soundButton
 
         binding.toolbar.shareButton.setOnClickListener {
             share()
@@ -67,14 +71,19 @@ class Principal : Fragment() {
         bgsound = MediaPlayer.create(activity, R.raw.bgsound)
         spinSound = MediaPlayer.create(activity, R.raw.girar)
 
-        bgsound.isLooping = true
         bgsound.start()
+        bgsound.isLooping = true
         bgsound.setVolume(1.0f, 1.0f)
 
         circularButton.setOnClickListener {
             if (!isBottleSpinning) {
                 startBottleSpin()
             }
+        }
+
+        soundButton.setOnClickListener {
+            isBGSoundEnabled = !isBGSoundEnabled
+            toggleBackgroundSound(isBGSoundEnabled)
         }
 
     }
@@ -140,10 +149,6 @@ class Principal : Fragment() {
 
             override fun onAnimationEnd(animation: Animation?) {
                 stopBottleSpinSound()
-                circularButton.isEnabled = true
-                circularButton.visibility = View.VISIBLE
-                pressText.visibility = View.VISIBLE
-                startRippleAnimation(circularButton)
                 showCountdownText()
             }
 
@@ -163,8 +168,13 @@ class Principal : Fragment() {
             }
 
             override fun onFinish() {
+                circularButton.isEnabled = true
+                circularButton.visibility = View.VISIBLE
+                pressText.visibility = View.VISIBLE
+                startRippleAnimation(circularButton)
                 countdownText.visibility = View.INVISIBLE
                 isBottleSpinning = false
+                toggleBackgroundSound(true)
             }
         }.start()
     }
@@ -172,22 +182,34 @@ class Principal : Fragment() {
     private fun playBottleSpinSound() {
         if (!spinSound.isPlaying) {
             spinSound.start()
-            bgsound.stop()
-            bgsound.seekTo(0)
+            toggleBackgroundSound(false)
         }
     }
-
     private fun stopBottleSpinSound() {
         if (spinSound.isPlaying) {
             spinSound.pause()
-            bgsound.start()
             spinSound.seekTo(0)
         }
     }
+    private fun toggleBackgroundSound(isEnabled: Boolean) {
+        if (isBGSoundEnabled) {
+            if (isEnabled) {
+                bgsound.start()
+            } else {
+                bgsound.pause()
+                bgsound.seekTo(0)
+            }
+        }
+        else {
+            bgsound.pause()
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
         spinSound.release()
+        bgsound.release()
     }
 
 
