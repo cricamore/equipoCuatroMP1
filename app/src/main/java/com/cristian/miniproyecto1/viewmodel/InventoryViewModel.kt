@@ -3,6 +3,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cristian.miniproyecto1.model.Pokemon
 import com.cristian.miniproyecto1.model.Product
 import com.cristian.miniproyecto1.repository.InventoryRepository
 import com.example.clase8.model.Inventory

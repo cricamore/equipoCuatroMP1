@@ -14,10 +14,17 @@ import android.view.animation.ScaleAnimation
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.databinding.FragmentPrincipalBinding
+import com.cristian.miniproyecto1.view.DialogoReto
+import com.cristian.miniproyecto1.view.DialogoReto.Companion.showDialogoReto
+import com.cristian.miniproyecto1.viewmodel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class Principal : Fragment() {
     private lateinit var binding: FragmentPrincipalBinding
     private lateinit var circularButton: Button
@@ -25,6 +32,7 @@ class Principal : Fragment() {
     private lateinit var spinSound: MediaPlayer
     private lateinit var imageViewBotella: ImageView
     private lateinit var pressText: TextView
+    private val inventoryViewModel: InventoryViewModel by viewModels()
     private var currentRotation = 0f
 
 
@@ -69,16 +77,25 @@ class Principal : Fragment() {
             startBottleSpin()
         }
 
+        dialogoReto()
     }
 
     private fun share() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.setType("text/plain")
-        val shareBody = "Body"
-        val shareSub = "Subject"
+        val shareBody = "App pico botella\n" +
+                "“Solo los valientes lo juegan !!\n" +
+                "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es"
+        val shareSub = "App pico botella"
         intent.putExtra(Intent.EXTRA_SUBJECT, shareSub)
         intent.putExtra(Intent.EXTRA_TEXT, shareBody)
         startActivity(Intent.createChooser(intent, "Share using"))
+    }
+
+    private fun dialogoReto() {
+        binding.toolbar.dialogoShow.setOnClickListener {
+            showDialogoReto(this, inventoryViewModel)
+        }
     }
 
     private fun startRippleAnimation(view: Button) {
