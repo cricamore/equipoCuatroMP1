@@ -46,7 +46,6 @@ class Principal : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentPrincipalBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
@@ -185,9 +184,15 @@ class Principal : Fragment() {
                 startRippleAnimation(circularButton)
                 countdownText.visibility = View.INVISIBLE
                 isBottleSpinning = false
-                toggleBackgroundSound(true)
+                dialogo()
             }
         }.start()
+    }
+
+    private fun dialogo(){
+        showDialogoReto(this,inventoryViewModel){
+            toggleBackgroundSound(true)
+        }
     }
 
     private fun playBottleSpinSound() {
