@@ -28,7 +28,8 @@ class DialogoReto {
 
         fun showDialogoReto(
             fragment: Principal,
-            inventoryViewModel: InventoryViewModel
+            inventoryViewModel: InventoryViewModel,
+            onCloseCallback: () -> Unit
         ) {
             val inflater = LayoutInflater.from(fragment.requireContext())
             val binding = DialogoRetoBinding.inflate(inflater)
@@ -47,7 +48,8 @@ class DialogoReto {
             }
 
             binding.btnCerrar.setOnClickListener {
-                Toast.makeText(fragment.requireContext(), "Reto cerrado", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(fragment.requireContext(), "Reto cerrado", Toast.LENGTH_SHORT).show()
+                onCloseCallback.invoke()
                 alertDialog.dismiss()
             }
             alertDialog.show()
