@@ -38,7 +38,7 @@ class RecyclerAdapter(private val listaRetos: MutableList<Reto>, private val nav
 
 
         recyclerViewHolder.bindingItem.deleteIcon.setOnClickListener{
-            Toast.makeText(recyclerViewHolder.itemView.context, "Clic en delete", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(recyclerViewHolder.itemView.context, "Clic en delete", Toast.LENGTH_SHORT).show()
             val retoAEliminar = obtenerRetoAEliminar(position)
             val idAEliminar = obtenerIdAEliminar(position)
 
@@ -50,7 +50,17 @@ class RecyclerAdapter(private val listaRetos: MutableList<Reto>, private val nav
         }
 
         recyclerViewHolder.bindingItem.editIcon.setOnClickListener{
-            Toast.makeText(recyclerViewHolder.itemView.context, "Clic en edit", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(recyclerViewHolder.itemView.context, "Clic en edit", Toast.LENGTH_SHORT).show()
+            val retoAEditar = obtenerRetoAEliminar(position)
+            val idAEditar = obtenerIdAEliminar(position)
+
+            val bundle = Bundle().apply {
+                putString("retoAEditar", retoAEditar)
+                putInt("idAEditar", idAEditar)
+            }
+            //Toast.makeText(recyclerViewHolder.itemView.context, "Clic en edit + $bundle", Toast.LENGTH_SHORT).show()
+
+            recyclerViewHolder.itemView.findNavController().navigate(R.id.action_fragmentRetos_to_fragmentEditReto, bundle)
         }
 
         recyclerViewHolder.setItemReto(reto)
