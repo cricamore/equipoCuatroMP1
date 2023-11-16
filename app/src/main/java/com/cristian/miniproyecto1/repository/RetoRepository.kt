@@ -18,7 +18,7 @@ class RetoRepository(val context: Context){
     }
 
     suspend fun getListRetos():MutableList<Reto>{
-        retoDao.saveReto(Reto(id = 0, reto = "Hola Mundo"))
+        //retoDao.saveReto(Reto(id = 0, reto = "Hola Mundo"))
         return withContext(Dispatchers.IO){
             retoDao.getListReto()
         }
