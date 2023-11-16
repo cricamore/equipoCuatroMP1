@@ -48,7 +48,7 @@
                     android:layout_weight="1"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
-                    android:src="@drawable/baseline_videogame_asset_24"
+                    android:src="@drawable/controller"
                     app:tint="#ff3d00" />
 
                 <ImageView

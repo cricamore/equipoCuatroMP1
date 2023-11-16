@@ -92,6 +92,14 @@ class Principal : Fragment() {
         soundButton.setOnClickListener {
             isBGSoundEnabled = !isBGSoundEnabled
             toggleBackgroundSound(isBGSoundEnabled)
+
+            val imageResource = if (isBGSoundEnabled){
+                R.drawable.baseline_volume_up_24
+            } else {
+                R.drawable.baseline_volume_off_24
+            }
+
+            binding.toolbar.soundButton.setImageResource(imageResource)
         }
         
     }
