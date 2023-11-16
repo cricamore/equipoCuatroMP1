@@ -24,4 +24,51 @@
         android:id="@+id/action_to_principal"
         app:destination="@id/principal" />
 
+    <action
+        android:id="@+id/action_to_fragmentRetos"
+        app:destination="@id/fragmentRetos" />
+
+    <fragment
+        android:id="@+id/fragmentRetos"
+        android:name="com.cristian.miniproyecto1.view.fragment.FragmentRetos"
+        android:label="FragmentRetos"
+        tools:layout = "@layout/fragment_retos">
+        <action
+            android:id="@+id/action_fragmentRetos_to_fragmentCustomDialog"
+            app:destination="@id/fragmentCustomDialog" />
+        <action
+            android:id="@+id/action_fragmentRetos_to_fragmentDeleteReto"
+            app:destination="@id/fragmentDeleteReto" />
+        <action
+            android:id="@+id/action_fragmentRetos_to_fragmentEditReto"
+            app:destination="@id/fragmentEditReto" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDeleteReto"
+        android:name="com.cristian.miniproyecto1.view.fragment.FragmentDeleteReto"
+        android:label="FragmentDeleteReto"
+        tools:layout="@layout/fragment_delete_reto">
+        <action
+            android:id="@+id/action_fragmentDeleteReto_to_fragmentRetos"
+            app:destination="@id/fragmentRetos" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditReto"
+        android:name="com.cristian.miniproyecto1.view.fragment.FragmentEditReto"
+        android:label="FragmentEditReto"
+        tools:layout="@layout/fragment_edit_reto">
+        <action
+            android:id="@+id/action_fragmentEditReto_to_fragmentRetos"
+            app:destination="@id/fragmentRetos" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCustomDialog"
+        android:name="com.cristian.miniproyecto1.view.fragment.FragmentCustomDialog"
+        android:label="FragmentCustomDialog"
+        tools:layout = "@layout/fragment_custom_dialog">
+        <action
+            android:id="@+id/action_fragmentCustomDialog_to_fragmentRetos"
+            app:destination="@id/fragmentRetos" />
+    </fragment>
+
 </navigation>

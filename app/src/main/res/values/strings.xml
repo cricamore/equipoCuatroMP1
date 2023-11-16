@@ -3,4 +3,10 @@
     <string name="todo">TODO</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button">Presióname</string>
+    <string name="custom_dialog">Agregar reto</string>
+    <string name="reto_dialog">Escriba el reto</string>
+    <string name="cancel">Cancelar</string>
+    <string name="guardar">Guardar</string>
+    <string name="delete_dialog">¿Deseas eliminar el siguiente reto?</string>
+    <string name="editText">Editar Reto</string>
 </resources>

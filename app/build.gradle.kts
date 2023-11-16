@@ -18,7 +18,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+}
 
     buildTypes {
         release {
@@ -29,6 +29,11 @@ android {
             )
         }
     }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,9 +42,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
+
 }
 
 dependencies {
@@ -76,6 +79,16 @@ dependencies {
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    
+    //viewmodel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     // Room
     implementation ("androidx.room:room-runtime:2.5.2")

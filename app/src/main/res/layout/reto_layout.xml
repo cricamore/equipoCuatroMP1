@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonPanel"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <!-- Icono de Editar -->
+                <ImageView
+                    android:id="@+id/editIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contenido"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:tint="#008000"
+                    android:src="@android:drawable/ic_menu_edit"/>
+
+                <!-- Icono de Borrar -->
+                <ImageView
+                    android:id="@+id/deleteIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contenido"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toEndOf="@id/editIcon"
+                    app:tint="#C30010"
+                    android:src="@android:drawable/ic_menu_delete"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Línea Horizontal -->
+            <View
+                android:id="@+id/linea"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/buttonPanel"
+                android:layout_marginTop="8dp"
+                android:background="#000000" />
+            <TextView
+                android:id="@+id/contenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linea"
+                android:text="Soy el reto 1" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
