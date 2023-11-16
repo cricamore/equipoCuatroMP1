@@ -3,6 +3,7 @@ package com.cristian.miniproyecto1.view.fragment
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,9 +32,14 @@ class Principal : Fragment() {
     private lateinit var bgsound: MediaPlayer
     private lateinit var spinSound: MediaPlayer
     private lateinit var imageViewBotella: ImageView
+    private lateinit var countdownText: TextView
     private lateinit var pressText: TextView
     private val inventoryViewModel: InventoryViewModel by viewModels()
     private var currentRotation = 0f
+    private var isBottleSpinning = false
+
+    private var isBGSoundEnabled = true
+    private lateinit var soundButton: ImageView
 
 
     override fun onCreateView(
@@ -54,6 +60,8 @@ class Principal : Fragment() {
     private fun controladores() {
         imageViewBotella = binding.imageViewBotella
         pressText = binding.pressText
+        countdownText = binding.textViewContador
+        soundButton = binding.toolbar.soundButton
 
         binding.toolbar.shareButton.setOnClickListener {
             share()
@@ -63,18 +71,27 @@ class Principal : Fragment() {
             bgsound.stop()
         }
 
+        countdownText.visibility = View.INVISIBLE
+
         circularButton = binding.button
         startRippleAnimation(circularButton)
 
         bgsound = MediaPlayer.create(activity, R.raw.bgsound)
         spinSound = MediaPlayer.create(activity, R.raw.girar)
 
-        bgsound.isLooping = true
         bgsound.start()
+        bgsound.isLooping = true
         bgsound.setVolume(1.0f, 1.0f)
 
         circularButton.setOnClickListener {
-            startBottleSpin()
+            if (!isBottleSpinning) {
+                startBottleSpin()
+            }
+        }
+
+        soundButton.setOnClickListener {
+            isBGSoundEnabled = !isBGSoundEnabled
+            toggleBackgroundSound(isBGSoundEnabled)
         }
 
         dialogoReto()
@@ -123,6 +140,7 @@ class Principal : Fragment() {
     }
 
     private fun startBottleSpin() {
+        isBottleSpinning = true
         circularButton.isEnabled = false
         circularButton.clearAnimation()
         circularButton.visibility = View.INVISIBLE
@@ -144,15 +162,11 @@ class Principal : Fragment() {
         rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
                 playBottleSpinSound()
-                imageViewBotella.visibility = View.VISIBLE
             }
 
             override fun onAnimationEnd(animation: Animation?) {
                 stopBottleSpinSound()
-                circularButton.isEnabled = true
-                circularButton.visibility = View.VISIBLE
-                pressText.visibility = View.VISIBLE
-                startRippleAnimation(circularButton)
+                showCountdownText()
             }
 
             override fun onAnimationRepeat(animation: Animation?) {}
@@ -162,25 +176,57 @@ class Principal : Fragment() {
         imageViewBotella.startAnimation(rotateAnimation)
     }
 
+    private fun showCountdownText() {
+        countdownText.visibility = View.VISIBLE
+
+        object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownText.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                circularButton.isEnabled = true
+                circularButton.visibility = View.VISIBLE
+                pressText.visibility = View.VISIBLE
+                startRippleAnimation(circularButton)
+                countdownText.visibility = View.INVISIBLE
+                isBottleSpinning = false
+                toggleBackgroundSound(true)
+            }
+        }.start()
+    }
+
     private fun playBottleSpinSound() {
         if (!spinSound.isPlaying) {
             spinSound.start()
-            bgsound.stop()
-            bgsound.seekTo(0)
+            toggleBackgroundSound(false)
         }
     }
-
     private fun stopBottleSpinSound() {
         if (spinSound.isPlaying) {
             spinSound.pause()
-            bgsound.start()
             spinSound.seekTo(0)
         }
     }
+    private fun toggleBackgroundSound(isEnabled: Boolean) {
+        if (isBGSoundEnabled) {
+            if (isEnabled) {
+                bgsound.start()
+            } else {
+                bgsound.pause()
+                bgsound.seekTo(0)
+            }
+        }
+        else {
+            bgsound.pause()
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
         spinSound.release()
+        bgsound.release()
     }
 
 
