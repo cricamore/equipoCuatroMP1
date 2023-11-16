@@ -93,8 +93,7 @@ class Principal : Fragment() {
             isBGSoundEnabled = !isBGSoundEnabled
             toggleBackgroundSound(isBGSoundEnabled)
         }
-
-        dialogoReto()
+        
     }
 
     private fun share() {
@@ -109,11 +108,6 @@ class Principal : Fragment() {
         startActivity(Intent.createChooser(intent, "Share using"))
     }
 
-    private fun dialogoReto() {
-        binding.toolbar.dialogoShow.setOnClickListener {
-            showDialogoReto(this, inventoryViewModel)
-        }
-    }
 
     private fun startRippleAnimation(view: Button) {
         val animationSet = AnimationSet(true)
