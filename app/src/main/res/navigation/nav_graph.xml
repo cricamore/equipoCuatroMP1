@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragmentRetos_to_fragmentCustomDialog"
             app:destination="@id/fragmentCustomDialog" />
+        <action
+            android:id="@+id/action_fragmentRetos_to_fragmentDeleteReto"
+            app:destination="@id/fragmentDeleteReto" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCustomDialog"
@@ -21,6 +24,15 @@
         tools:layout = "@layout/fragment_custom_dialog">
         <action
             android:id="@+id/action_fragmentCustomDialog_to_fragmentRetos"
+            app:destination="@id/fragmentRetos" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDeleteReto"
+        android:name="com.example.picobotella.fragment.FragmentDeleteReto"
+        android:label="FragmentDeleteReto"
+        tools:layout="@layout/fragment_delete_reto">
+        <action
+            android:id="@+id/action_fragmentDeleteReto_to_fragmentRetos"
             app:destination="@id/fragmentRetos" />
     </fragment>
 

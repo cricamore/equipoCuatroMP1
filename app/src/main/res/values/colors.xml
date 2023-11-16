@@ -9,5 +9,6 @@
     <color name="colorOrangeStart">#FF714F</color>
     <color name="colorOrangeEnd">#FF4822</color>
     <color name="colorDarkOrangePressed">#D84315</color>
+    <color name="transparent">#00FFFFFF</color>
 
 </resources>

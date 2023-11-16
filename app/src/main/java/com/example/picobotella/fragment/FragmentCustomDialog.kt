@@ -47,6 +47,7 @@ class FragmentCustomDialog: Fragment() {
     fun showInputDialog() {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.fragment_custom_dialog, null, false)
         dialog.setContentView(binding.root)
+        findNavController().navigate(R.id.action_fragmentCustomDialog_to_fragmentRetos)
         dialog.window?.setLayout(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
@@ -84,8 +85,8 @@ class FragmentCustomDialog: Fragment() {
         btnGuardar.setOnClickListener {
             Toast.makeText(context, etReto.text, Toast.LENGTH_SHORT).show()
             saveInvetory()
-            findNavController().navigate(R.id.action_fragmentCustomDialog_to_fragmentRetos)
             dialog.dismiss()
+            findNavController().navigate(R.id.fragmentRetos)
         }
     }
 

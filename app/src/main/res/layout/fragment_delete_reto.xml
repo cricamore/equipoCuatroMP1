@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentCustomDialog"
@@ -24,7 +22,7 @@
                 android:id="@+id/tvReto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/custom_dialog"
+                android:text="@string/delete_dialog"
                 android:gravity="center"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -34,50 +32,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tvRetoDesc"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/reto_dialog"
-                android:backgroundTint="@color/colorOrange"
-                android:inputType="text"
-                android:gravity="start"
-                android:id="@+id/etReto"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="3dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvReto" />
+                android:text="Vas a eliminar el siguiente reto"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvReto"
+                />
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnRetoCancelar"
+                android:id="@+id/btnNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/reto_button"
                 android:clickable="true"
-                android:text="@string/cancel"
-                android:textColor="@color/colorWhite"
+                android:text="No"
+                android:textColor="@color/colorOrange"
+                android:background="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnRetoGuardar"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etReto" />
+                app:layout_constraintEnd_toStartOf="@+id/yes"
+                app:layout_constraintTop_toBottomOf="@id/tvRetoDesc" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/guardar"
+                android:text="Si"
                 android:layout_marginTop="20dp"
-                android:enabled="false"
                 android:clickable="false"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/reto_button"
-                android:id="@+id/btnRetoGuardar"
-                app:layout_constraintTop_toBottomOf="@id/etReto"
+                android:textColor="@color/colorOrange"
+                android:background="@color/transparent"
+                app:layout_constraintTop_toBottomOf="@id/tvRetoDesc"
                 app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

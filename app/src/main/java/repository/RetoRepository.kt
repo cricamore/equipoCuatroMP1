@@ -19,10 +19,15 @@ class RetoRepository(val context: Context){
         }
     }
 
-    suspend fun getListRetos():MutableList<Reto>{
-        retoDao.saveReto(Reto(id = 0, reto = "Hola Mundo"))
+    suspend fun getListRetos():MutableList<Reto>?{
         return withContext(Dispatchers.IO){
-            retoDao.getListReto()
+            val list = retoDao.getListReto()
+            if(list.isEmpty()){
+                null
+            }else {
+                list.reverse()
+                list
+            }
         }
     }
 
