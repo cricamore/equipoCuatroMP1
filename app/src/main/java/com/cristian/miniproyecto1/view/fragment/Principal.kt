@@ -266,5 +266,16 @@ class Principal : Fragment() {
         bgsound.release()
     }
 
+    override fun onPause() {
+        super.onPause()
+        toggleBackgroundSound(false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toggleBackgroundSound(isBGSoundEnabled)
+    }
+
+
 
 }
