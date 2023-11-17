@@ -38,6 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/reto_dialog"
+                android:backgroundTint="@color/colorOrange"
                 android:inputType="text"
                 android:gravity="start"
                 android:id="@+id/etReto"
