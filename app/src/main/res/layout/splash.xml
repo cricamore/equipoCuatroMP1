@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iconImageView"
                 android:text="pico botella"
-                android:textColor="#F23005"
+                android:textColor="@color/naranja"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:fontFamily="sans-serif-condensed-medium"

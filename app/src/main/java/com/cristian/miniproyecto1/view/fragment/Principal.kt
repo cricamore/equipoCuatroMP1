@@ -23,6 +23,7 @@ import com.cristian.miniproyecto1.databinding.FragmentPrincipalBinding
 import com.cristian.miniproyecto1.view.DialogoReto
 import com.cristian.miniproyecto1.view.DialogoReto.Companion.showDialogoReto
 import com.cristian.miniproyecto1.viewmodel.InventoryViewModel
+import com.cristian.miniproyecto1.viewmodel.RetoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,6 +37,7 @@ class Principal : Fragment() {
     private lateinit var countdownText: TextView
     private lateinit var pressText: TextView
     private val inventoryViewModel: InventoryViewModel by viewModels()
+    private val retoViewModel: RetoViewModel by viewModels()
     private var currentRotation = 0f
     private var isBottleSpinning = false
 
@@ -226,7 +228,7 @@ class Principal : Fragment() {
     }
 
     private fun dialogo(){
-        showDialogoReto(this,inventoryViewModel){
+        showDialogoReto(this,inventoryViewModel, retoViewModel){
             toggleBackgroundSound(true)
         }
     }

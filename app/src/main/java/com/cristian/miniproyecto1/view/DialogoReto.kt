@@ -17,6 +17,7 @@ import com.cristian.miniproyecto1.model.Product
 import com.cristian.miniproyecto1.repository.InventoryRepository
 import com.cristian.miniproyecto1.view.fragment.Principal
 import com.cristian.miniproyecto1.viewmodel.InventoryViewModel
+import com.cristian.miniproyecto1.viewmodel.RetoViewModel
 import com.cristian.miniproyecto1.webservice.ApiService
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.ViewModelLifecycle
@@ -29,6 +30,7 @@ class DialogoReto {
         fun showDialogoReto(
             fragment: Principal,
             inventoryViewModel: InventoryViewModel,
+            retoViewModel: RetoViewModel,
             onCloseCallback: () -> Unit
         ) {
             val inflater = LayoutInflater.from(fragment.requireContext())
@@ -44,6 +46,14 @@ class DialogoReto {
                 inventoryViewModel.listProducts.observe(fragment.viewLifecycleOwner) { lista ->
                     val product = lista[Random.nextInt(1,151)]
                     Glide.with(binding.root.context).load(product.image).into(binding.pokemon)
+                }
+            }
+
+            retoViewModel.getListRetos()
+            fragment.view?.let { view ->
+                retoViewModel.listRetos.observe(fragment.viewLifecycleOwner){ lista ->
+                    val retos = lista[Random.nextInt(lista.size)]
+                    binding.reto.text = retos.reto
                 }
             }
 
