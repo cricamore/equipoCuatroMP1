@@ -2,6 +2,7 @@ package com.cristian.miniproyecto1.view.fragment
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
@@ -70,6 +71,7 @@ class Principal : Fragment() {
             bgsound.stop()
         }
 
+
         countdownText.visibility = View.INVISIBLE
 
         circularButton = binding.button
@@ -100,6 +102,10 @@ class Principal : Fragment() {
 
             binding.toolbar.soundButton.setImageResource(imageResource)
         }
+        val starButton = binding.toolbar.starButton
+        starButton.setOnClickListener {
+            openGooglePlayPage()
+        }
         
     }
 
@@ -115,6 +121,24 @@ class Principal : Fragment() {
         startActivity(Intent.createChooser(intent, "Share using"))
     }
 
+    private fun openGooglePlayPage() {
+        val appPackageName = "com.nequi.MobileApp&hl=es_419&gl=es"
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
+            )
+        } catch (e: android.content.ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
+        }
+    }
 
     private fun startRippleAnimation(view: Button) {
         val animationSet = AnimationSet(true)
