@@ -8,7 +8,19 @@
         app:cardElevation="5dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp">
-
+        <!--                Icono logo-->
+        <ImageView
+            android:id="@+id/logoIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contenido"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/baseline_catching_pokemon_24"
+            android:layout_alignParentStart = "true"
+            app:tint="#FFC403"
+            />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +34,8 @@
 
                 <!-- Icono de Editar -->
                 <ImageView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="?android:attr/selectableItemBackground"
                     android:id="@+id/editIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -33,6 +47,8 @@
 
                 <!-- Icono de Borrar -->
                 <ImageView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="?android:attr/selectableItemBackground"
                     android:id="@+id/deleteIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

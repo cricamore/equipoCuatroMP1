@@ -72,6 +72,7 @@ class Principal : Fragment() {
 
         binding.toolbar.retosButton.setOnClickListener{
             findNavController().navigate(R.id.action_to_fragmentRetos)
+            bgsound.stop()
         }
 
         countdownText.visibility = View.INVISIBLE

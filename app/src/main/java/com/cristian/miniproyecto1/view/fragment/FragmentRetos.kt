@@ -43,6 +43,9 @@ class FragmentRetos: Fragment() {
         binding.addButton.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentRetos_to_fragmentCustomDialog)
         }
+        binding.btnBack.setOnClickListener{
+            findNavController().navigate(R.id.action_to_principal)
+        }
 
         retoViewModel.getListRetos()
         var listaRetos = retoViewModel.listRetos

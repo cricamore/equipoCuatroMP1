@@ -2,16 +2,19 @@ package com.cristian.miniproyecto1.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.AlphaAnimation
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.databinding.RetoLayoutBinding
 import com.cristian.miniproyecto1.model.Reto
-import androidx.navigation.findNavController
-import com.cristian.miniproyecto1.R
+
 
 class RecyclerAdapter(private val listaRetos: MutableList<Reto>, private val navController: NavController): RecyclerView.Adapter<RecyclerViewHolder>(){
+
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerViewHolder {
         val context = parent.context
         println("Adapter Context: $context")
@@ -52,6 +55,9 @@ class RecyclerAdapter(private val listaRetos: MutableList<Reto>, private val nav
 
         recyclerViewHolder.bindingItem.editIcon.setOnClickListener{
             //Toast.makeText(recyclerViewHolder.itemView.context, "Clic en edit", Toast.LENGTH_SHORT).show()
+            val fadeIn = AlphaAnimation(1f, 0.5f)
+            fadeIn.duration = 5000
+            recyclerViewHolder.bindingItem.buttonPanel.startAnimation(fadeIn)
             val retoAEditar = obtenerRetoAEliminar(position)
             val idAEditar = obtenerIdAEliminar(position)
 
@@ -66,4 +72,6 @@ class RecyclerAdapter(private val listaRetos: MutableList<Reto>, private val nav
 
         recyclerViewHolder.setItemReto(reto)
     }
+
+
 }
