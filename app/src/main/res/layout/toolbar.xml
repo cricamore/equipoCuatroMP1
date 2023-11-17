@@ -27,6 +27,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
                     android:src="@drawable/baseline_star_border_24"
@@ -37,6 +40,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
                     android:src="@drawable/baseline_volume_up_24"
@@ -47,6 +53,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
                     android:src="@drawable/controller"
@@ -57,6 +66,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
                     android:src="@drawable/baseline_add_circle_24"
@@ -67,6 +79,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:paddingHorizontal="15dp"
                     android:paddingEnd="30dp"
@@ -76,7 +91,6 @@
 
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
         <androidx.constraintlayout.widget.Guideline
