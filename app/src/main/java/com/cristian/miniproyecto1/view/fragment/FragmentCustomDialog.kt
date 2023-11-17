@@ -6,19 +6,16 @@ import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cristian.miniproyecto1.R
 import com.cristian.miniproyecto1.viewmodel.RetoViewModel
 import com.cristian.miniproyecto1.databinding.FragmentCustomDialogBinding
-import com.cristian.miniproyecto1.databinding.FragmentRetosBinding
 import com.cristian.miniproyecto1.model.Reto
 
 
@@ -61,29 +58,25 @@ class FragmentCustomDialog: Fragment() {
 
         etReto.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Nada que hacer
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Nada que hacer
+
             }
 
             override fun afterTextChanged(s: Editable?) {
                 val inputText = s.toString().trim()
 
-                // Habilita o deshabilita el botón "Guardar" según si el EditText está vacío o no
                 btnGuardar.isEnabled = !inputText.isEmpty()
             }
         })
 
         btnCancel.setOnClickListener {
-            Toast.makeText(context, "Has hecho clic en el botón de cancelar.", Toast.LENGTH_SHORT)
-                .show()
             dialog.dismiss()
         }
 
         btnGuardar.setOnClickListener {
-            Toast.makeText(context, etReto.text, Toast.LENGTH_SHORT).show()
             saveInvetory()
             dialog.dismiss()
             findNavController().navigate(R.id.fragmentRetos)
@@ -94,8 +87,6 @@ class FragmentCustomDialog: Fragment() {
         val retoText = binding.etReto.text.toString()
         val reto = Reto(reto = retoText)
         retoViewModel.saveReto(reto)
-        Log.d("test", reto.toString())
-        Toast.makeText(context,"Artículo guardado !!", Toast.LENGTH_SHORT).show()
     }
 
 }

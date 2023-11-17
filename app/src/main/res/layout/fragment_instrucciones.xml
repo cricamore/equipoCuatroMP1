@@ -18,8 +18,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:paddingTop="16dp"
+                android:contentDescription="@string/app_name"
                 android:paddingStart="16dp"
+                android:paddingTop="16dp"
                 android:paddingEnd="16dp"
                 android:src="@drawable/back_arrow" />
 
@@ -47,7 +48,11 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_below="@id/toolbarRetos"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <!-- Descripción 1 -->
         <TextView
@@ -58,7 +63,11 @@
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:layout_below="@id/titulo1"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <!-- Título 2 -->
         <TextView
@@ -70,7 +79,11 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_below="@id/descripcion1"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <!-- Descripción 2 -->
         <TextView
@@ -81,16 +94,20 @@
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:layout_below="@id/titulo2"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <ImageView
             android:id="@+id/iv_persona"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="300sp"
+            android:layout_height="300sp"
             android:layout_below="@+id/descripcion2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="110sp"
-            android:src="@drawable/baseline_emoji_people_24" />
+            android:src="@drawable/persona" />
 
     </RelativeLayout>
 </layout>

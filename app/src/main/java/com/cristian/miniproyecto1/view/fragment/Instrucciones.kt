@@ -35,9 +35,14 @@ class Instrucciones : Fragment() {
     }
 
     private fun animate() {
-        val rotationAnimator = ObjectAnimator.ofFloat(binding.ivPersona, "rotation", 0f, 360f)
-        rotationAnimator.duration = 1000
-        rotationAnimator.repeatCount = ObjectAnimator.INFINITE
-        rotationAnimator.start()
+
+        val initialX = binding.ivPersona.translationY
+
+        val translationAnimator = ObjectAnimator.ofFloat(binding.ivPersona, "translationY", initialX, 200f)
+        translationAnimator.duration = 1000
+        translationAnimator.repeatMode = ObjectAnimator.REVERSE
+        translationAnimator.repeatCount = ObjectAnimator.INFINITE
+        translationAnimator.start()
     }
+
 }
